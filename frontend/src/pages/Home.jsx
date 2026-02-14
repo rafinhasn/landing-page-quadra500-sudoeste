@@ -270,6 +270,82 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Residencial Rubi Section */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                <span className="text-red-500">Residencial Rubi:</span> 4 Suítes com Vista Livre
+              </h2>
+              <p className="text-xl text-gray-300">
+                Sofisticação e elegância no coração do Sudoeste
+              </p>
+            </div>
+
+            {/* Image Grid */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_lead-capture-56/artifacts/zcf8vndh_IMG_7494.jpeg"
+                  alt="Residencial Rubi Logo"
+                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-red-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+
+              <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_lead-capture-56/artifacts/ybhwa4az_IMG_7493.jpeg"
+                  alt="Residencial Rubi Interior"
+                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-red-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+
+              <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_lead-capture-56/artifacts/7z4jbbq2_IMG_7492.jpeg"
+                  alt="Residencial Rubi Fachada"
+                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-red-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+
+            {/* Features Cards */}
+            <div className="grid md:grid-cols-4 gap-6 mb-10">
+              <div className="bg-red-900/20 backdrop-blur-sm border border-red-500/30 rounded-xl p-6 text-center hover:bg-red-900/30 transition-all duration-300">
+                <div className="text-red-400 text-3xl font-bold mb-2">4 Suítes</div>
+                <p className="text-gray-300 text-sm">Até 257m²</p>
+              </div>
+              <div className="bg-red-900/20 backdrop-blur-sm border border-red-500/30 rounded-xl p-6 text-center hover:bg-red-900/30 transition-all duration-300">
+                <div className="text-red-400 text-3xl font-bold mb-2">Vista Livre</div>
+                <p className="text-gray-300 text-sm">Permanente</p>
+              </div>
+              <div className="bg-red-900/20 backdrop-blur-sm border border-red-500/30 rounded-xl p-6 text-center hover:bg-red-900/30 transition-all duration-300">
+                <div className="text-red-400 text-3xl font-bold mb-2">4 Vagas</div>
+                <p className="text-gray-300 text-sm">+ Bicicletário</p>
+              </div>
+              <div className="bg-red-900/20 backdrop-blur-sm border border-red-500/30 rounded-xl p-6 text-center hover:bg-red-900/30 transition-all duration-300">
+                <div className="text-red-400 text-3xl font-bold mb-2">Cobertura</div>
+                <p className="text-gray-300 text-sm">Até 505m²</p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <Button 
+                onClick={scrollToForm}
+                size="lg"
+                className="bg-red-600 hover:bg-red-700 text-white px-12 py-6 text-lg font-semibold rounded-full shadow-2xl hover:scale-105 transition-transform duration-300"
+              >
+                Quero conhecer o Rubi
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Grid Section */}
       <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">

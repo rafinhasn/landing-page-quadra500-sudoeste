@@ -4,7 +4,7 @@ from datetime import datetime
 import uuid
 
 from models import Lead, LeadCreate, LeadStats
-from server import db
+from database import db
 
 router = APIRouter(prefix="/api/leads", tags=["leads"])
 

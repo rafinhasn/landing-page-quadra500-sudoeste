@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-02-14T18:51:40.631017",
-  "total_tests": 7,
-  "passed_tests": 7,
+  "timestamp": "2026-02-14T18:51:54.403064",
+  "total_tests": 8,
+  "passed_tests": 8,
   "success_rate": 100.0,
   "test_results": [
     {
       "test_name": "Health Check API",
       "status": "PASSED",
-      "timestamp": "2026-02-14T18:51:35.783479",
+      "timestamp": "2026-02-14T18:51:49.398836",
       "details": {
         "expected_status": 200,
         "actual_status": 200,
@@ -20,24 +20,24 @@
     {
       "test_name": "Create Lead - Valid Data",
       "status": "PASSED",
-      "timestamp": "2026-02-14T18:51:36.419189",
+      "timestamp": "2026-02-14T18:51:50.094444",
       "details": {
         "expected_status": 201,
         "actual_status": 201,
         "response_data": {
           "nome": "Jo\u00e3o Silva Teste",
-          "email": "joao.teste.1f0fa505@example.com",
+          "email": "joao.teste.e8ad441d@example.com",
           "celular": "61999887766",
           "quartos": "4",
-          "_id": "8edf607b-96de-4cd4-8e40-474179c26c29",
-          "created_at": "2026-02-14T18:51:36.389000"
+          "_id": "387a17fc-ec4f-45ff-a138-dc7d871db8f7",
+          "created_at": "2026-02-14T18:51:50.045000"
         }
       }
     },
     {
       "test_name": "Create Lead - Duplicate Email",
       "status": "PASSED",
-      "timestamp": "2026-02-14T18:51:37.070984",
+      "timestamp": "2026-02-14T18:51:50.726413",
       "details": {
         "expected_status": 400,
         "actual_status": 400,
@@ -49,7 +49,7 @@
     {
       "test_name": "Create Lead - Invalid Data",
       "status": "PASSED",
-      "timestamp": "2026-02-14T18:51:37.745221",
+      "timestamp": "2026-02-14T18:51:51.375315",
       "details": {
         "expected_status": 422,
         "actual_status": 422,
@@ -100,11 +100,19 @@
     {
       "test_name": "Get Leads List",
       "status": "PASSED",
-      "timestamp": "2026-02-14T18:51:38.359907",
+      "timestamp": "2026-02-14T18:51:51.986065",
       "details": {
         "expected_status": 200,
         "actual_status": 200,
         "response_data": [
+          {
+            "nome": "Jo\u00e3o Silva Teste",
+            "email": "joao.teste.e8ad441d@example.com",
+            "celular": "61999887766",
+            "quartos": "4",
+            "_id": "387a17fc-ec4f-45ff-a138-dc7d871db8f7",
+            "created_at": "2026-02-14T18:51:50.045000"
+          },
           {
             "nome": "Jo\u00e3o Silva Teste",
             "email": "joao.teste.1f0fa505@example.com",
@@ -119,22 +127,39 @@
     {
       "test_name": "Get Lead Statistics",
       "status": "PASSED",
-      "timestamp": "2026-02-14T18:51:38.978993",
+      "timestamp": "2026-02-14T18:51:52.641592",
       "details": {
         "expected_status": 200,
         "actual_status": 200,
         "response_data": {
-          "total": 1,
+          "total": 2,
           "por_quartos": {
-            "4": 1
+            "4": 2
           }
+        }
+      }
+    },
+    {
+      "test_name": "Get Specific Lead",
+      "status": "PASSED",
+      "timestamp": "2026-02-14T18:51:53.282113",
+      "details": {
+        "expected_status": 200,
+        "actual_status": 200,
+        "response_data": {
+          "nome": "Jo\u00e3o Silva Teste",
+          "email": "joao.teste.e8ad441d@example.com",
+          "celular": "61999887766",
+          "quartos": "4",
+          "_id": "387a17fc-ec4f-45ff-a138-dc7d871db8f7",
+          "created_at": "2026-02-14T18:51:50.045000"
         }
       }
     },
     {
       "test_name": "Get Non-existent Lead",
       "status": "PASSED",
-      "timestamp": "2026-02-14T18:51:40.130013",
+      "timestamp": "2026-02-14T18:51:53.901977",
       "details": {
         "expected_status": 404,
         "actual_status": 404,

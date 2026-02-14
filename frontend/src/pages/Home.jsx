@@ -105,6 +105,18 @@ const Home = () => {
             >
               Cadastre-se agora
             </Button>
+
+            <div className="mt-6">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 text-white text-lg hover:text-green-400 transition-colors duration-300"
+              >
+                <MessageCircle className="w-6 h-6" />
+                <span>Fale conosco no WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

@@ -22,6 +22,11 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedQuartos, setSelectedQuartos] = useState('');
 
+  // WhatsApp Business number
+  const whatsappNumber = '5561985309658';
+  const whatsappMessage = encodeURIComponent('Olá! Gostaria de saber mais informações sobre o lançamento Quadra 500 Sudoeste.');
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
   const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm({
     resolver: zodResolver(formSchema)
   });

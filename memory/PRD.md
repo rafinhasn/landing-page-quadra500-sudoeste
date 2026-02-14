@@ -48,6 +48,11 @@ Criar uma landing page idêntica ao site da Emplavi para capturar informações 
 - [x] Toasts de feedback (sonner)
 - [x] Design responsivo e elegante
 - [x] Animações e transições suaves
+- [x] **WhatsApp Business Integration** (+55 61 98530-9658)
+  - Botão flutuante no canto inferior direito com animação pulse
+  - Link direto no hero section
+  - Número visível no footer
+  - Mensagem pré-formatada: "Olá! Gostaria de saber mais informações sobre o lançamento Quadra 500 Sudoeste."
 
 ### Tecnologias Utilizadas
 - React 19

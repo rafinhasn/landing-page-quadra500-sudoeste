@@ -349,13 +349,26 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="bg-black border-t border-white/10 py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-400 text-sm">
-            © 2025 Quadra 500 Sudoeste - Todos os direitos reservados
-          </p>
-          <p className="text-gray-500 text-xs mt-2">
-            MI: R22-159.970 (1º Oficio)
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-4">
+            <div className="flex items-center justify-center gap-4">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors duration-300"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span className="font-semibold">+55 61 98530-9658</span>
+              </a>
+            </div>
+            <p className="text-gray-400 text-sm">
+              © 2025 Quadra 500 Sudoeste - Todos os direitos reservados
+            </p>
+            <p className="text-gray-500 text-xs">
+              MI: R22-159.970 (1º Oficio)
+            </p>
+          </div>
         </div>
       </footer>
     </div>

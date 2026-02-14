@@ -220,6 +220,56 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Destaque: Único 2 Quartos Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                <span className="text-purple-400">Exclusividade:</span> O Único 2 Quartos da Quadra 500
+              </h2>
+              <p className="text-xl text-gray-300">
+                Residencial Ametista - Uma oportunidade única no Sudoeste
+              </p>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
+              <img
+                src="https://customer-assets.emergentagent.com/job_lead-capture-56/artifacts/9w024jfm_IMG_7491.jpeg"
+                alt="Residencial Ametista - Único 2 Quartos do Sudoeste"
+                className="w-full h-auto rounded-2xl group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            <div className="mt-12 grid md:grid-cols-3 gap-6">
+              <div className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 text-center hover:bg-purple-900/30 transition-all duration-300">
+                <div className="text-purple-400 text-3xl font-bold mb-2">2 Quartos</div>
+                <p className="text-gray-300">Configuração única</p>
+              </div>
+              <div className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 text-center hover:bg-purple-900/30 transition-all duration-300">
+                <div className="text-purple-400 text-3xl font-bold mb-2">Quadra 500</div>
+                <p className="text-gray-300">Localização privilegiada</p>
+              </div>
+              <div className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 text-center hover:bg-purple-900/30 transition-all duration-300">
+                <div className="text-purple-400 text-3xl font-bold mb-2">Exclusivo</div>
+                <p className="text-gray-300">Único no Sudoeste</p>
+              </div>
+            </div>
+
+            <div className="text-center mt-10">
+              <Button 
+                onClick={scrollToForm}
+                size="lg"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-12 py-6 text-lg font-semibold rounded-full shadow-2xl hover:scale-105 transition-transform duration-300"
+              >
+                Quero conhecer o Ametista
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Grid Section */}
       <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">

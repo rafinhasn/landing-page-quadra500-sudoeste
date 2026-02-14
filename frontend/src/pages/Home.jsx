@@ -285,16 +285,11 @@ const Home = () => {
             />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <img
-              src="https://customer-assets.emergentagent.com/job_lead-capture-56/artifacts/chghvmqe_IMG_0548.jpeg"
-              alt="Plantas inteligentes"
-              className="w-full rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
-            />
+          <div className="flex justify-center">
             <img
               src="https://customer-assets.emergentagent.com/job_lead-capture-56/artifacts/d25erkbz_IMG_0547.jpeg"
               alt="Cobertura"
-              className="w-full rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
+              className="w-full max-w-3xl rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
             />
           </div>
         </div>

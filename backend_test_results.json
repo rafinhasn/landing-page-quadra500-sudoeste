@@ -1,0 +1,147 @@
+{
+  "timestamp": "2026-02-14T18:51:40.631017",
+  "total_tests": 7,
+  "passed_tests": 7,
+  "success_rate": 100.0,
+  "test_results": [
+    {
+      "test_name": "Health Check API",
+      "status": "PASSED",
+      "timestamp": "2026-02-14T18:51:35.783479",
+      "details": {
+        "expected_status": 200,
+        "actual_status": 200,
+        "response_data": {
+          "message": "Quadra 500 Sudoeste API - Online",
+          "status": "healthy"
+        }
+      }
+    },
+    {
+      "test_name": "Create Lead - Valid Data",
+      "status": "PASSED",
+      "timestamp": "2026-02-14T18:51:36.419189",
+      "details": {
+        "expected_status": 201,
+        "actual_status": 201,
+        "response_data": {
+          "nome": "Jo\u00e3o Silva Teste",
+          "email": "joao.teste.1f0fa505@example.com",
+          "celular": "61999887766",
+          "quartos": "4",
+          "_id": "8edf607b-96de-4cd4-8e40-474179c26c29",
+          "created_at": "2026-02-14T18:51:36.389000"
+        }
+      }
+    },
+    {
+      "test_name": "Create Lead - Duplicate Email",
+      "status": "PASSED",
+      "timestamp": "2026-02-14T18:51:37.070984",
+      "details": {
+        "expected_status": 400,
+        "actual_status": 400,
+        "response_data": {
+          "detail": "Este email j\u00e1 est\u00e1 cadastrado"
+        }
+      }
+    },
+    {
+      "test_name": "Create Lead - Invalid Data",
+      "status": "PASSED",
+      "timestamp": "2026-02-14T18:51:37.745221",
+      "details": {
+        "expected_status": 422,
+        "actual_status": 422,
+        "response_data": {
+          "detail": [
+            {
+              "type": "string_too_short",
+              "loc": [
+                "body",
+                "nome"
+              ],
+              "msg": "String should have at least 2 characters",
+              "input": "",
+              "ctx": {
+                "min_length": 2
+              },
+              "url": "https://errors.pydantic.dev/2.12/v/string_too_short"
+            },
+            {
+              "type": "value_error",
+              "loc": [
+                "body",
+                "email"
+              ],
+              "msg": "value is not a valid email address: An email address must have an @-sign.",
+              "input": "invalid-email",
+              "ctx": {
+                "reason": "An email address must have an @-sign."
+              }
+            },
+            {
+              "type": "string_too_short",
+              "loc": [
+                "body",
+                "celular"
+              ],
+              "msg": "String should have at least 10 characters",
+              "input": "123",
+              "ctx": {
+                "min_length": 10
+              },
+              "url": "https://errors.pydantic.dev/2.12/v/string_too_short"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "Get Leads List",
+      "status": "PASSED",
+      "timestamp": "2026-02-14T18:51:38.359907",
+      "details": {
+        "expected_status": 200,
+        "actual_status": 200,
+        "response_data": [
+          {
+            "nome": "Jo\u00e3o Silva Teste",
+            "email": "joao.teste.1f0fa505@example.com",
+            "celular": "61999887766",
+            "quartos": "4",
+            "_id": "8edf607b-96de-4cd4-8e40-474179c26c29",
+            "created_at": "2026-02-14T18:51:36.389000"
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "Get Lead Statistics",
+      "status": "PASSED",
+      "timestamp": "2026-02-14T18:51:38.978993",
+      "details": {
+        "expected_status": 200,
+        "actual_status": 200,
+        "response_data": {
+          "total": 1,
+          "por_quartos": {
+            "4": 1
+          }
+        }
+      }
+    },
+    {
+      "test_name": "Get Non-existent Lead",
+      "status": "PASSED",
+      "timestamp": "2026-02-14T18:51:40.130013",
+      "details": {
+        "expected_status": 404,
+        "actual_status": 404,
+        "response_data": {
+          "detail": "Lead n\u00e3o encontrado"
+        }
+      }
+    }
+  ]
+}

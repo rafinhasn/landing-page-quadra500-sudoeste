@@ -52,6 +52,17 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-black">
+      {/* Floating WhatsApp Button */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl hover:scale-110 transition-all duration-300 animate-pulse"
+        aria-label="Fale conosco no WhatsApp"
+      >
+        <MessageCircle className="w-8 h-8" />
+      </a>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">

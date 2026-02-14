@@ -46,6 +46,11 @@ Criar uma landing page idêntica ao site da Emplavi para capturar informações 
   - Destaque visual com tema roxo/purple
   - 3 cards informativos (2 Quartos, Quadra 500, Exclusivo)
   - CTA específico para o Ametista
+- [x] **Seção Especial: Residencial Rubi** - 4 Suítes com Vista Livre
+  - Grid com 3 imagens de alta qualidade
+  - 4 cards informativos (4 Suítes, Vista Livre, 4 Vagas, Cobertura)
+  - Tema vermelho/red elegante
+  - CTA específico para o Rubi
 - [x] CTAs ao longo da página
 - [x] Footer informativo
 - [x] mockData.js para armazenar submissions temporariamente

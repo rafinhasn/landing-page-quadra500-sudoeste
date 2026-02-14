@@ -42,6 +42,10 @@ Criar uma landing page idêntica ao site da Emplavi para capturar informações 
 - [x] Hero section com imagem de fundo e título principal
 - [x] Formulário de cadastro completo com validação (react-hook-form + zod)
 - [x] Seções de features com as imagens fornecidas
+- [x] **Seção Especial: Residencial Ametista** - O Único 2 Quartos da Quadra 500
+  - Destaque visual com tema roxo/purple
+  - 3 cards informativos (2 Quartos, Quadra 500, Exclusivo)
+  - CTA específico para o Ametista
 - [x] CTAs ao longo da página
 - [x] Footer informativo
 - [x] mockData.js para armazenar submissions temporariamente

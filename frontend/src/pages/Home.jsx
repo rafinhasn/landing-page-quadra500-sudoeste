@@ -34,13 +34,33 @@ const Home = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      // Save to mock data
-      mockDataService.saveFormData(data);
+      // Send to backend API
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Erro ao enviar cadastro');
+      }
+
+      const result = await response.json();
+      console.log('Lead criado:', result);
+      
       toast.success('Cadastro realizado com sucesso! Em breve entraremos em contato.');
       reset();
       setSelectedQuartos('');
     } catch (error) {
-      toast.error('Erro ao realizar cadastro. Tente novamente.');
+      console.error('Erro ao cadastrar:', error);
+      if (error.message.includes('já está cadastrado')) {
+        toast.error('Este email já está cadastrado em nosso sistema.');
+      } else {
+        toast.error('Erro ao realizar cadastro. Tente novamente.');
+      }
     } finally {
       setIsSubmitting(false);
     }

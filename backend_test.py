@@ -102,7 +102,7 @@ class QuadraLeadAPITester:
         )
         
         if success and response:
-            self.created_lead_id = response.get('id')
+            self.created_lead_id = response.get('id') or response.get('_id')
             self.created_lead_email = test_lead['email']
         
         return success, response

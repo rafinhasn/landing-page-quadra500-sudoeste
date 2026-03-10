@@ -30,7 +30,7 @@ async def create_lead(lead: LeadCreate):
         lead_dict["created_at"] = datetime.utcnow()
         
         # Insere no banco
-        result = await db.leads.insert_one(lead_dict)
+        await db.leads.insert_one(lead_dict)
         
         # Retorna o lead criado
         created_lead = await db.leads.find_one({"_id": lead_dict["_id"]})

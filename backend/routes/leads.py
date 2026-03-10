@@ -5,6 +5,7 @@ import uuid
 
 from models import Lead, LeadCreate, LeadStats
 from database import db
+from notifications import notification_service
 
 router = APIRouter(prefix="/api/leads", tags=["leads"])
 
@@ -33,6 +34,15 @@ async def create_lead(lead: LeadCreate):
         
         # Retorna o lead criado
         created_lead = await db.leads.find_one({"_id": lead_dict["_id"]})
+        
+        # Envia notificações (email e WhatsApp)
+        try:
+            notification_service.notify_new_lead(lead_dict)
+        except Exception as e:
+            # Se falhar ao enviar notificação, apenas loga o erro
+            # Não queremos falhar a criação do lead por causa disso
+            print(f"Warning: Failed to send notifications: {str(e)}")
+        
         return Lead(**created_lead)
         
     except HTTPException:

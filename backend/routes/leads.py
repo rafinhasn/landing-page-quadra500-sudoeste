@@ -2,12 +2,14 @@ from fastapi import APIRouter, HTTPException, status
 from typing import List
 from datetime import datetime
 import uuid
+import logging
 
 from models import Lead, LeadCreate, LeadStats
 from database import db
 from notifications import notification_service
 
 router = APIRouter(prefix="/api/leads", tags=["leads"])
+logger = logging.getLogger(__name__)
 
 
 @router.post("", response_model=Lead, status_code=status.HTTP_201_CREATED)
@@ -17,7 +19,15 @@ async def create_lead(lead: LeadCreate):
     """
     try:
         # Verifica se o email já existe
-        existing_lead = await db.leads.find_one({"email": lead.email})
+        try:
+            existing_lead = await db.leads.find_one({"email": lead.email})
+        except Exception as db_error:
+            logger.error(f"Database query error: {str(db_error)}")
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="Erro ao conectar com o banco de dados. Tente novamente."
+            )
+        
         if existing_lead:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
@@ -30,10 +40,23 @@ async def create_lead(lead: LeadCreate):
         lead_dict["created_at"] = datetime.utcnow()
         
         # Insere no banco
-        await db.leads.insert_one(lead_dict)
+        try:
+            await db.leads.insert_one(lead_dict)
+            logger.info(f"Lead created: {lead_dict['_id']} - {lead.email}")
+        except Exception as db_error:
+            logger.error(f"Database insert error: {str(db_error)}")
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="Erro ao salvar dados. Tente novamente."
+            )
         
         # Retorna o lead criado
-        created_lead = await db.leads.find_one({"_id": lead_dict["_id"]})
+        try:
+            created_lead = await db.leads.find_one({"_id": lead_dict["_id"]})
+        except Exception as db_error:
+            logger.error(f"Database fetch error: {str(db_error)}")
+            # Retorna o lead mesmo que não consiga buscar
+            return Lead(**lead_dict)
         
         # Envia notificações (email e WhatsApp)
         try:
@@ -41,16 +64,17 @@ async def create_lead(lead: LeadCreate):
         except Exception as e:
             # Se falhar ao enviar notificação, apenas loga o erro
             # Não queremos falhar a criação do lead por causa disso
-            print(f"Warning: Failed to send notifications: {str(e)}")
+            logger.warning(f"Failed to send notifications: {str(e)}")
         
         return Lead(**created_lead)
         
     except HTTPException:
         raise
     except Exception as e:
+        logger.error(f"Unexpected error creating lead: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Erro ao criar lead: {str(e)}"
+            detail="Erro inesperado ao criar lead"
         )
 
 
@@ -62,11 +86,13 @@ async def get_leads(skip: int = 0, limit: int = 100):
     """
     try:
         leads = await db.leads.find().sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
+        logger.info(f"Retrieved {len(leads)} leads")
         return [Lead(**lead) for lead in leads]
     except Exception as e:
+        logger.error(f"Error fetching leads: {str(e)}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Erro ao buscar leads: {str(e)}"
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Erro ao buscar leads. Verifique a conexão com o banco de dados."
         )
 
 

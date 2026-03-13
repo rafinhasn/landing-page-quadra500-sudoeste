@@ -30,6 +30,27 @@ api_router = APIRouter(prefix="/api")
 async def root():
     return {"message": "Quadra 500 Sudoeste API - Online", "status": "healthy"}
 
+@api_router.get("/health")
+async def health_check():
+    """
+    Health check endpoint that verifies database connectivity
+    """
+    try:
+        # Try to ping MongoDB
+        await db.command('ping')
+        return {
+            "status": "healthy",
+            "message": "API and Database are operational",
+            "database": "connected"
+        }
+    except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
+        return {
+            "status": "unhealthy",
+            "message": "Database connection failed",
+            "error": str(e)
+        }
+
 # Include routers
 app.include_router(leads_router)
 app.include_router(api_router)
@@ -52,12 +73,31 @@ logger = logging.getLogger(__name__)
 @app.on_event("startup")
 async def startup_event():
     logger.info("Starting Quadra 500 Sudoeste API...")
-    # Create indexes
-    await db.leads.create_index("email", unique=True)
-    await db.leads.create_index("created_at")
-    logger.info("Database indexes created")
+    try:
+        # Create indexes with error handling for production
+        try:
+            await db.leads.create_index("email", unique=True)
+            logger.info("Email index created (unique)")
+        except Exception as e:
+            # Index may already exist, which is fine
+            logger.warning(f"Email index creation skipped: {str(e)}")
+        
+        try:
+            await db.leads.create_index("created_at")
+            logger.info("Created_at index created")
+        except Exception as e:
+            logger.warning(f"Created_at index creation skipped: {str(e)}")
+        
+        logger.info("Database indexes setup complete")
+    except Exception as e:
+        logger.error(f"Error during startup: {str(e)}")
+        # Don't fail the app if index creation fails
+        pass
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
-    client.close()
-    logger.info("Database connection closed")
+    try:
+        client.close()
+        logger.info("Database connection closed")
+    except Exception as e:
+        logger.error(f"Error closing database connection: {str(e)}")
